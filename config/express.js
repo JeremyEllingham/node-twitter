@@ -6,8 +6,9 @@ const session = require("express-session");
 const compression = require("compression");
 // const favicon = require('serve-favicon');
 const errorHandler = require("errorhandler");
-const mongoInit = require("connect-mongo");
-const mongoStore = new mongoInit()(session);
+// const mongoInit = require("connect-mongo");
+// const mongoStore = new mongoInit()(session);
+const MongoStore = require("connect-mongo");
 const flash = require("connect-flash");
 const helpers = require("view-helpers");
 const bodyParser = require("body-parser");
@@ -83,7 +84,8 @@ module.exports = (app, config, passport) => {
       secret: process.env.SECRET,
       resave: false,
       saveUninitialized: false,
-      store: new mongoStore({
+      store: MongoStore.create({
+        mongoUrl: "mongodb://localhost/test-app",
         url: config.db,
         collection: "sessions",
       }),

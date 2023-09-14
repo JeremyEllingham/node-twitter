@@ -6,7 +6,8 @@ const session = require("express-session");
 const compression = require("compression");
 // const favicon = require('serve-favicon');
 const errorHandler = require("errorhandler");
-const mongoStore = require("connect-mongo")(session);
+const mongoInit = require("connect-mongo");
+const mongoStore = new mongoInit()(session);
 const flash = require("connect-flash");
 const helpers = require("view-helpers");
 const bodyParser = require("body-parser");
@@ -27,20 +28,20 @@ module.exports = (app, config, passport) => {
   // use morgan for logging
   app.use(
     morgan("dev", {
-      skip: function(req, res) {
+      skip: function (req, res) {
         return res.statusCode < 400;
       },
-      stream: process.stderr
+      stream: process.stderr,
     })
   );
 
   // use morgan for logging
   app.use(
     morgan("dev", {
-      skip: function(req, res) {
+      skip: function (req, res) {
         return res.statusCode >= 400;
       },
-      stream: process.stdout
+      stream: process.stdout,
     })
   );
   // setup Sentry to get any crashes
@@ -51,10 +52,10 @@ module.exports = (app, config, passport) => {
   }
   app.use(
     compression({
-      filter: function(req, res) {
+      filter: function (req, res) {
         return /json|text|javascript|css/.test(res.getHeader("Content-Type"));
       },
-      level: 9
+      level: 9,
     })
   );
   // app.use(favicon());
@@ -72,7 +73,7 @@ module.exports = (app, config, passport) => {
   app.use(cookieParser());
   app.use(
     bodyParser.urlencoded({
-      extended: true
+      extended: true,
     })
   );
   app.use(bodyParser.json());
@@ -84,15 +85,15 @@ module.exports = (app, config, passport) => {
       saveUninitialized: false,
       store: new mongoStore({
         url: config.db,
-        collection: "sessions"
-      })
+        collection: "sessions",
+      }),
     })
   );
 
   app.use(flash());
   app.use(passport.initialize());
   app.use(passport.session());
-  app.disable('view cache');
+  app.disable("view cache");
   app.use((err, req, res, next) => {
     if (err.message.indexOf("not found") !== -1) {
       return next();

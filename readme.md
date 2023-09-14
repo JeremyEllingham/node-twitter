@@ -3,7 +3,6 @@
 [![Build Status](https://travis-ci.org/vinitkumar/node-twitter.svg?branch=master)](https://travis-ci.org/vinitkumar/node-twitter)
 <img src="https://opencollective.com/nodetwitter/tiers/backer/badge.svg?label=backer&color=brightgreen" />
 
-
 Node twitter is an effort to rewrite some of Twitter's functionality using modern
 javascript based toolchain. It was mostly an effort to learn Node.js and trying to reverse
 engineer some of twitter's feature.
@@ -32,14 +31,18 @@ sudo npm install -g sass
 
 The configuration is in `config/config.js`. Please create your own `.env` file. You can find an example of `.env` file in `.env.example`.
 
-Create a [github application](https://github.com/settings/apps) and copy cliend id and secret to .env file:  
+Create a [github application](https://github.com/settings/apps).
+
+- Add callback url "http://localhost:3000"
+- Disable SSL verification
+- Copy cliend id and secret to .env file:
 
 ```
 GITHUB_CLIENT_SECRET="your_github_client_secret"
 GITHUB_CLIENT_ID="your_github_client_id"
 ```
-## Usage via Docker
 
+## Usage via Docker
 
 The fastest way to get this running is with docker. Docker bootstrap all dependencies and
 you can just run these couple of commands to get it up and running.
@@ -52,10 +55,10 @@ docker-compose --log-level DEBUG build
 
 docker-compose up
 ```
+
 Now, open the website on http://localhost:3000 and it should just work.
 
 Before building Docker container change DB link to: `mongodb://mongodb/ntwitter` in `.env` file.
-
 
 ## Usage
 
@@ -79,10 +82,10 @@ Express app started on port 3000
 
 First, thank you for considering contributing to Node Twitter
 
-
 ! It's people like you that make the open source community such a great community! 😊
 
 We welcome any type of contribution, not only code. You can help with
+
 - **QA**: file bug reports, the more details you can give the better (e.g. screenshots with the console open)
 - **Marketing**: writing blog posts, howto's, printing stickers, ...
 - **Community**: presenting the project at meetups, organizing a dedicated meetup for the local community, ...
@@ -91,7 +94,7 @@ We welcome any type of contribution, not only code. You can help with
 
 ## Your First Contribution
 
-Working on your first Pull Request? You can learn how from this *free* series, [How to Contribute to an Open Source Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github).
+Working on your first Pull Request? You can learn how from this _free_ series, [How to Contribute to an Open Source Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github).
 
 ## Submitting code
 
@@ -127,13 +130,11 @@ Thank you to all the people who have already contributed to node-twitter!
 [![6](https://sourcerer.io/fame/vinitkumar/vinitkumar/node-twitter/images/6)](https://sourcerer.io/fame/vinitkumar/vinitkumar/node-twitter/links/6)
 [![7](https://sourcerer.io/fame/vinitkumar/vinitkumar/node-twitter/images/7)](https://sourcerer.io/fame/vinitkumar/vinitkumar/node-twitter/links/7)
 
-
 ### Backers
 
 Thank you to all our backers! [[Become a backer](https://opencollective.com/nodetwitter/#backer)]
 
 <a href="https://opencollective.com/nodetwitter#backers" target="_blank"><img src="https://opencollective.com/nodetwitter/backers.svg?width=890"></a>
-
 
 ### Sponsors
 
@@ -151,9 +152,10 @@ Thank you to all our sponsors! (please ask your company to also support this ope
 <a href="https://opencollective.com/nodetwitter/sponsor/9/website" target="_blank"><img src="https://opencollective.com/nodetwitter/sponsor/9/avatar.svg"></a>
 
 <!-- This `CONTRIBUTING.md` is based on @nayafia's template https://github.com/nayafia/contributing-template -->
-## License
-[Apache License 2.0](https://github.com/vinitkumar/node-twitter/blob/master/License)
 
+## License
+
+[Apache License 2.0](https://github.com/vinitkumar/node-twitter/blob/master/License)
 
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fvinitkumar%2Fnode-twitter.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fvinitkumar%2Fnode-twitter?ref=badge_large)
 
